@@ -1,0 +1,12 @@
+.header-container {
+    background-color: rgb(64, 64, 64);
+    /* margin-bottom: 16px; */
+}
+
+.logo, .main-nav {
+    align-self: center;
+}
+
+.main-nav {
+    justify-self: end;
+}
