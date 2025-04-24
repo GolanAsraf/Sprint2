@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Generator</title>
+    <title>Kekw Meme Generator</title>
 </head>
-<body>
-    
+
+<body class="main-layout">
+    <header class="main-header">Kekw</header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><button class="btn-saved" onclick="onShowModal(this)">Saved</button></li>
+            <li><button class="btn-gallery" onclick="onShowModal(this)">Gallery</button></li>
+            <li><button class="btn-about" onclick="onShowModal(this)">About</button></li>
+        </ul>
+    </nav>
+
+    <main class="main-layout">
+        <div class="canvas-container">
+            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()"
+                onmousemove="onDraw(event)">
+            </canvas>
+        </div>
+
+        <div class="controls-container">
+            <input type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
+
+            <button class="btn-txt-switch" onclick="onTxtSwitch()"><--  --></button>
+            <button class="btn-text" onclick="onAddText()">Add Text</button>
+            <button class="btn-clear" onclick="onDelete()">Delete</button>
+
+            <input type="range" id="size-range" min="1" max="100" value="5" onchange="onChangeSize(event)">
+            <label for="size-range">Text Size</label>
+            <button class="btn-txt-start">|-</button>
+            <button class="btn-txt-center">|-|</button>
+            <button class="btn-txt-end">-|</button>
+
+            <div class="font-family-container">
+                <select id="font-family" onchange="onChangeFont(event)">
+                    <option value="Arial">Arial</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+            </div>
+
+            <button class="btn-txt-bold" onclick="onBold()">B</button>
+            <input type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
+
+            <div class="emoji-conainer">
+                <button class="btn-emoji" onclick="onAddEmoji('😂')">😂</button>
+                <button class="btn-emoji" onclick="onAddEmoji('🤣')">🤣</button>
+                <button class="btn-emoji" onclick="onAddEmoji('😅')">😅</button>
+                <button class="btn-emoji" onclick="onAddEmoji('😆')">😆</button>
+                <button class="btn-emoji" onclick="onAddEmoji('😜')">😜</button>
+            </div>
+
+            <button class="btn-save" onclick="onSave()">Save</button>
+            <button class="btn-download" onclick="onDownload()">Download</button>
+            <button class="btn-share" onclick="onShare()">Share</button>
+        </div>
+
+    </main>
+
 </body>
+
 </html>
