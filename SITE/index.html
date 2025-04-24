@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body class="main-layout">
-    <header class="main-header">Kekw</header>
+<body class="body-layout">
 
-    <nav class="main-nav">
-        <ul>
-            <li><button class="btn-saved" onclick="onShowModal(this)">Saved</button></li>
-            <li><button class="btn-gallery" onclick="onShowModal(this)">Gallery</button></li>
-            <li><button class="btn-about" onclick="onShowModal(this)">About</button></li>
-        </ul>
-    </nav>
+    
+    <header class="header-container flex space-between align-center">
+            <h1 class="logo">Kekw</h1>
+        
+            <nav class="main-nav">
+                <ul class="nav-list clean-list flex gap">
+                    <li><button class="btn-saved" onclick="onShowModal(this)">Saved</button></li>
+                    <li><button class="btn-gallery" onclick="onShowModal(this)">Gallery</button></li>
+                    <li><button class="btn-about" onclick="onShowModal(this)">About</button></li>
+                </ul>
+            </nav>
+    </header>
 
     <main class="main-layout">
         <div class="canvas-container">
@@ -29,7 +33,7 @@
         <div class="controls-container">
             <input type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
 
-            <button class="btn-txt-switch" onclick="onTxtSwitch()"><--  --></button>
+            <button class="btn-txt-switch" onclick="onTxtSwitch()"></button>
             <button class="btn-text" onclick="onAddText()">Add Text</button>
             <button class="btn-clear" onclick="onDelete()">Delete</button>
 
@@ -52,7 +56,7 @@
             <button class="btn-txt-bold" onclick="onBold()">B</button>
             <input type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
 
-            <div class="emoji-conainer">
+            <div class="emoji-container">
                 <button class="btn-emoji" onclick="onAddEmoji('😂')">😂</button>
                 <button class="btn-emoji" onclick="onAddEmoji('🤣')">🤣</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😅')">😅</button>
@@ -66,6 +70,17 @@
         </div>
 
     </main>
+
+    <footer class="main-footer flex justify-center">
+        <div class="footer-container flex align-center gap">
+            <p>&copy; 2025 Kekw Meme Generator by Golan Asraf</p>
+            <div class="social-media-icons flex gap">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">TW</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
