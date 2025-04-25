@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kekw Meme Generator</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/487591b766.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="body-layout">
@@ -22,7 +23,7 @@
         </nav>
     </header>
 
-    <main class="main-layout">
+    <main class="main-layout main-container">
         <div class="canvas-container">
             <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()"
                 onmousemove="onDraw(event)">
@@ -30,17 +31,17 @@
         </div>
 
         <div class="controls-container">
-            <input type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
+            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
 
-            <button class="btn-txt-switch" onclick="onTxtSwitch()"></button>
-            <button class="btn-text" onclick="onAddText()">Add Text</button>
-            <button class="btn-clear" onclick="onDelete()">Delete</button>
+            <button class="btn-text-switch" onclick="onTxtSwitch()"><i class="fa-solid fa-arrows-up-down"></i></button>
+            <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
+            <button class="btn-clear" onclick="onDelete()"><i class="fa-solid fa-trash"></i></button>
 
-            <input type="range" id="size-range" min="1" max="100" value="5" onchange="onChangeSize(event)">
-            <label for="size-range">Text Size</label>
-            <button class="btn-txt-start">|-</button>
-            <button class="btn-txt-center">|-|</button>
-            <button class="btn-txt-end">-|</button>
+            <input class="font-size" type="range" id="size-range" min="1" max="100" value="5" onchange="onChangeSize(event)">
+            <label class="font-size-text" for="size-range">Text Size</label>
+            <button class="btn-txt-start"><i class="fa-solid fa-align-left"></i></button>
+            <button class="btn-txt-center"><i class="fa-solid fa-align-center"></i></button>
+            <button class="btn-txt-end"><i class="fa-solid fa-align-right"></i></button>
 
             <div class="font-family-container">
                 <select id="font-family" onchange="onChangeFont(event)">
@@ -53,19 +54,19 @@
             </div>
 
             <button class="btn-txt-bold" onclick="onBold()">B</button>
-            <input type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
+            <input class="color-picker" type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
 
-            <div class="emoji-container">
+            <!-- <div class="emoji-container">
                 <button class="btn-emoji" onclick="onAddEmoji('😂')">😂</button>
                 <button class="btn-emoji" onclick="onAddEmoji('🤣')">🤣</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😅')">😅</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😆')">😆</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😜')">😜</button>
-            </div>
+            </div> -->
 
-            <button class="btn-save" onclick="onSave()">Save</button>
-            <button class="btn-download" onclick="onDownload()">Download</button>
-            <button class="btn-share" onclick="onShare()">Share</button>
+            <!-- <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button class="btn-download" onclick="onDownload()"><i class="fa-solid fa-download"></i></button>
+            <button class="btn-share" onclick="onShare()"><i class="fa-solid fa-share-nodes"></i></button> -->
         </div>
 
     </main>
@@ -74,9 +75,9 @@
         <div class="footer-container flex align-center gap">
             <p>&copy; 2025 Kekw Meme Generator by Golan Asraf</p>
             <div class="social-media-icons flex gap">
-                <a href="#" class="social-icon">FB</a>
-                <a href="#" class="social-icon">IG</a>
-                <a href="#" class="social-icon">TW</a>
+                <button><i class="fa-brands fa-facebook"></i></button>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-twitter"></i>
             </div>
         </div>
     </footer>

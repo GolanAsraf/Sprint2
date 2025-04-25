@@ -1,3 +1,13 @@
-.controls-container {
-    background-color: rgb(209, 204, 204);
+.controls-container > * {
+    margin: 16px 16px;
+    margin-inline: 16px; /* Apply margin-inline to all direct children */
+}
+
+.text-input {
+    border-radius: 16px;
+}
+
+
+.font-size-text {
+    pointer-events: none; /* Disable all pointer events */
 }
