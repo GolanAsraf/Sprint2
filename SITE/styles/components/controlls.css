@@ -5,8 +5,8 @@
 
 .text-input {
     border-radius: 16px;
+    font-size: larger;
 }
-
 
 .font-size-text {
     pointer-events: none; /* Disable all pointer events */
