@@ -1,4 +1,4 @@
 .main-container {
-    background-color: rgb(209, 204, 204);
+    background-color: var(--secondary-color);
     border-radius: 16px;
 }

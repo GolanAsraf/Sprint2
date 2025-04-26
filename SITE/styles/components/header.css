@@ -1,10 +1,15 @@
 .header-container {
-    background-color: rgb(64, 64, 64);
+    background-color: var(--header-color);
     /* margin-bottom: 16px; */
 }
 
 .logo, .main-nav {
     align-self: center;
+}
+
+.span-logo {
+    font-size: 0.7rem;
+    color: white;
 }
 
 .main-nav {

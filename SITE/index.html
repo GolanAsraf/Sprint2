@@ -9,16 +9,15 @@
     <script src="https://kit.fontawesome.com/487591b766.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="body-layout">
-
+<body class="body-layout" onload="onInit()" onresize="onResize()">
     <header class="header-container">
-        <h1 class="logo">Kekw</h1>
+        <h1 class="logo"><button class="btn-logo" onclick="onShowPage(this.className)">Kekw<span class="span-logo">.Meme Generator</span></button></h1>
 
         <nav class="main-nav">
             <ul class="nav-list clean-list flex gap">
-                <li><button class="btn-saved" onclick="onShowModal(this)">Saved</button></li>
-                <li><button class="btn-gallery" onclick="onShowModal(this)">Gallery</button></li>
-                <li><button class="btn-about" onclick="onShowModal(this)">About</button></li>
+                <li><button class="btn-saved" onclick="onShowPage(this.className)">Saved</button></li>
+                <li><button class="btn-gallery" onclick="onShowPage(this.className)">Gallery</button></li>
+                <li><button class="btn-about" onclick="onShowPage(this.className)">About</button></li>
             </ul>
         </nav>
     </header>
@@ -31,13 +30,15 @@
         </div>
 
         <div class="controls-container">
-            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
+            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here"
+                oninput="onTextInput(event)">
 
             <button class="btn-text-switch" onclick="onTxtSwitch()"><i class="fa-solid fa-arrows-up-down"></i></button>
             <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
             <button class="btn-clear" onclick="onDelete()"><i class="fa-solid fa-trash"></i></button>
 
-            <input class="font-size" type="range" id="size-range" min="1" max="100" value="5" onchange="onChangeSize(event)">
+            <input class="font-size" type="range" id="size-range" min="1" max="100" value="5"
+                onchange="onChangeSize(event)">
             <label class="font-size-text" for="size-range">Text Size</label>
             <button class="btn-txt-start"><i class="fa-solid fa-align-left"></i></button>
             <button class="btn-txt-center"><i class="fa-solid fa-align-center"></i></button>
@@ -56,20 +57,24 @@
             <button class="btn-txt-bold" onclick="onBold()">B</button>
             <input class="color-picker" type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
 
-            <!-- <div class="emoji-container">
+            <div class="emoji-container">
                 <button class="btn-emoji" onclick="onAddEmoji('😂')">😂</button>
                 <button class="btn-emoji" onclick="onAddEmoji('🤣')">🤣</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😅')">😅</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😆')">😆</button>
                 <button class="btn-emoji" onclick="onAddEmoji('😜')">😜</button>
-            </div> -->
+            </div>
 
-            <!-- <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
             <button class="btn-download" onclick="onDownload()"><i class="fa-solid fa-download"></i></button>
-            <button class="btn-share" onclick="onShare()"><i class="fa-solid fa-share-nodes"></i></button> -->
+            <button class="btn-share" onclick="onShare()"><i class="fa-solid fa-share-nodes"></i></button>
         </div>
-
     </main>
+
+    <div class="saved-container hidden"></div>
+    <div class="gallery-container hidden justify-center align-center"></div>
+    <div class="about-container hidden"></div>
+
 
     <footer class="main-footer flex justify-center">
         <div class="footer-container flex align-center gap">
@@ -81,6 +86,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/controlers/main.controler.js"></script>
+    <script src="js/controlers/gallrey.controler.js"></script>
 
 </body>
 

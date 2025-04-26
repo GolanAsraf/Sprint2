@@ -5,9 +5,18 @@
 
 .text-input {
     border-radius: 16px;
-    font-size: larger;
+    font-size: 2rem;
 }
 
 .font-size-text {
     pointer-events: none; /* Disable all pointer events */
+}
+
+.text-input::placeholder, .text-input {
+    text-align: center; /* Centers the placeholder text */
+}
+
+.font-family-container, .color-picker {
+    margin: 0 auto;
+    align-self: center;
 }

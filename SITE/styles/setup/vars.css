@@ -1,4 +1,7 @@
 :root {
     --gap-size: 16px;
     --margin-inline: 16px;
+    --primriary-color: gray;
+    --secondary-color: rgb(209, 204, 204);
+    --header-color: rgb(64, 64, 64);
 }

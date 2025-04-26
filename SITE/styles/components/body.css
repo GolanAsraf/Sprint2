@@ -1,4 +1,4 @@
 .body-layout {
     row-gap: var(--gap-size);
-    background-color: gray;
+    background-color: var(--primriary-color);
 }
