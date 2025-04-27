@@ -1,33 +1,55 @@
-'use sctrict'
+'use strict'
 
-let gPages = [
-    { name: 'main', elClass: 'btn-logo' },
-    { name: 'saved', elClass: 'btn-saved' },
-    { name: 'gallery', elClass: 'btn-gallery' },
-    { name: 'about', elClass: 'btn-about' },
-]
-
-function onInit() {
-    console.log('Main controller initialized');
+var gElCanvas
+var gCtx
+var gIsMouseDown = false
+var gBrush = {
+    color: 'black',
+    size: 5,
+    shape: 'square'
 }
 
-function onShowPage(className) {
-    const elBtn = document.querySelector(`.${className}`);
+function onInit() {
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
 
-    gPages.map(page => {
-        const elPage = document.querySelector(`.${page.name}-container`);
+    onResize()
+}
 
-        if (page.elClass === className) {
-            elPage.classList.remove('hidden');
-            elBtn.classList.add('active');
-        } else {
-            console.log(`Hiding ${page.name} page`);
+function onResize() {
+    resizeCanvas()
+}
 
-            elPage.classList.add('hidden');
-            const elBtn = document.querySelector(`.${page.elClass}`);
-            elBtn.classList.remove('active');
-        }
-    });
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+    
+    var height = elContainer.offsetHeight - 16
 
-    window.scrollTo(0, 0);
+    // set canvas size to match container size
+    gElCanvas.style.width = `${elContainer.offsetWidth}px`
+    gElCanvas.style.height = `${height}px`
+
+    renderCanvas()
+}
+
+function renderCanvas() {
+    console.log('renderCanvas')
+    // set background color
+    gCtx.fillStyle = 'white'
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height) // Fill the canvas with the background color
+}
+
+function loadImgtoCanvas(img) {
+    const imgObj = new Image();
+    imgObj.src = img;
+    imgObj.onload = () => {
+        console.log(`Image loaded: ${imgObj.naturalWidth}x${imgObj.naturalHeight}`);
+        // Clear the canvas before drawing the new image
+        gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+
+        // Draw the image onto the canvas
+        gCtx.drawImage(imgObj, 0, 0, imgObj.naturalWidth, imgObj.naturalHeight);
+    };
 }

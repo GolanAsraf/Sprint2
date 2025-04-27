@@ -21,19 +21,17 @@ let gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['funny', 'toys'] }
 ]
 
-function onInit() {
-    console.log('Gallery controller initialized');
-    renderGallery();
-}
-
-function renderGallery() {
+function renderGallery(deRender = false) {
     const elGallery = document.querySelector('.gallery-container');
     const strHTMLs = gImgs.map(img => {
         return `<img class="gallery-img" src="${img.url}" alt="${img.keywords.join(', ')}" onclick="onImgClick(${img.id})">`
     }).join('');
-    elGallery.innerHTML = strHTMLs;
+
+    elGallery.innerHTML = deRender ? '' : strHTMLs;
 }
 
 function onImgClick(imgId) {
-
+    console.log(`Image with ID ${imgId} clicked`);
+    loadPage('main', 'gallery');
+    loadImgtoCanvas(gImgs[imgId - 1].url);
 }
