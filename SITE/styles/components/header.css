@@ -71,6 +71,12 @@
 
 .nav-list button:hover {
     background-color: #444; /* Highlight on hover */
+    border-radius: 5px; /* Rounded corners */
+    color: #fff; /* Change text color on hover */
+    font-weight: bold; /* Make text bold on hover */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle glow effect */
+    transform: scale(1.02); /* Slightly enlarge on hover */
+    transition: transform 0.2s ease; /* Smooth scaling effect */
 }
 
 /* Style for the menu button */

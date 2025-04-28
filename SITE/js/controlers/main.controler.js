@@ -13,24 +13,37 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    onResize()
-}
-
-function onResize() {
-    resizeCanvas()
-}
-
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-
     renderCanvas()
 }
 
 function renderCanvas() {
-    console.log('renderCanvas')
-    // set background color
-    gCtx.fillStyle = 'white'
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height) // Fill the canvas with the background color
+    console.log('renderCanvas');
+    const elContainer = document.querySelector('.canvas-container');
+
+    // Set the container's max dimensions
+    elContainer.style.maxWidth = '400px';
+    elContainer.style.maxHeight = '400px';
+    elContainer.style.width = '100%'; // Allow it to shrink if needed
+    elContainer.style.height = '100%'; // Allow it to shrink if needed
+    elContainer.style.overflow = 'hidden'; // Prevent overflow
+
+    // Set the canvas dimensions with a maximum of 400px
+    const canvasWidth = Math.min(400, elContainer.offsetWidth);
+    const canvasHeight = Math.min(400, elContainer.offsetHeight);
+
+    // Set the canvas element's width and height attributes
+    gElCanvas.width = canvasWidth;
+    gElCanvas.height = canvasHeight;
+
+    // Set the canvas CSS styles for max dimensions
+    gElCanvas.style.maxWidth = '400px';
+    gElCanvas.style.maxHeight = '400px';
+    gElCanvas.style.width = `${canvasWidth}px`;
+    gElCanvas.style.height = `${canvasHeight}px`;
+
+    // Fill the canvas with the background color
+    gCtx.fillStyle = 'white';
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height);
 }
 
 function loadImgtoCanvas(img) {

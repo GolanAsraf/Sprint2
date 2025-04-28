@@ -1,3 +1,4 @@
 .canvas-container {
     margin: 16px;
+    place-self: center;
 }

@@ -99,13 +99,3 @@
     grid-row: 6;
 }
 
-.gallery-container {
-    grid-column: 2;
-    grid-row: 2;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
-    /* grid-auto-flow: dense; */
-    gap: var(--gap-size);
-}

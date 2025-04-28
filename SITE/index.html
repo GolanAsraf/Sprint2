@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/487591b766.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="body-layout" onload="onInit()">
+<body class="body-layout" onload="onInit()" onresize="onResize()">
     <header class="header-container">
         <h1 class="logo"><button class="btn-main" onclick="onShowPage(this.className)">Kekw<span class="span-logo">.Meme
                     Generator</span></button></h1>
@@ -20,14 +20,12 @@
             <ul class="nav-list clean-list flex gap">
                 <li><button class="btn-saved" onclick="onShowPage(this.className)">Saved</button></li>
                 <li><button class="btn-gallery" onclick="onShowPage(this.className)">Gallery</button></li>
-                <li><button class="btn-about" onclick="onShowPage(this.className)">About</button></li>
+                <li><button class="btn-about" onclihck="onShowPage(this.className)">About</button></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Overlay for dimming -->
     <div class="overlay"></div>
-
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">
