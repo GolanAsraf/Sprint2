@@ -62,3 +62,42 @@ function loadPage(pageName, lastPageName) {
 
     window.scrollTo(0, 0);
 }
+
+function toggleMenu() {
+    const nav = document.querySelector('.main-nav');
+    const overlay = document.querySelector('.overlay');
+
+    nav.classList.toggle('visible');
+    overlay.classList.toggle('visible');
+}
+
+function toggleMenu() {
+    const nav = document.querySelector('.main-nav');
+    const overlay = document.querySelector('.overlay');
+
+    nav.classList.toggle('visible');
+    overlay.classList.toggle('visible');
+}
+
+// Close the menu when clicking outside of it
+document.addEventListener('click', (event) => {
+    const nav = document.querySelector('.main-nav');
+    const overlay = document.querySelector('.overlay');
+    const btnMenu = document.querySelector('.btn-menu');
+
+    if (nav.classList.contains('visible') && !nav.contains(event.target) && !btnMenu.contains(event.target)) {
+        nav.classList.remove('visible');
+        overlay.classList.remove('visible');
+    }
+});
+
+// Close the menu when clicking a navigation button
+document.querySelectorAll('.nav-list button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const nav = document.querySelector('.main-nav');
+        const overlay = document.querySelector('.overlay');
+
+        nav.classList.remove('visible');
+        overlay.classList.remove('visible');
+    });
+});

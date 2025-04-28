@@ -11,7 +11,10 @@
 
 <body class="body-layout" onload="onInit()">
     <header class="header-container">
-        <h1 class="logo"><button class="btn-main" onclick="onShowPage(this.className)">Kekw<span class="span-logo">.Meme Generator</span></button></h1>
+        <h1 class="logo"><button class="btn-main" onclick="onShowPage(this.className)">Kekw<span class="span-logo">.Meme
+                    Generator</span></button></h1>
+
+        <button class="btn-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
 
         <nav class="main-nav">
             <ul class="nav-list clean-list flex gap">
@@ -21,6 +24,10 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Overlay for dimming -->
+    <div class="overlay"></div>
+
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">

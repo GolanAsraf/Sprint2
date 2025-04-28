@@ -16,3 +16,87 @@
     justify-self: end;
     font-size: 1.2rem;
 }
+
+.main-nav {
+    display: none;
+}
+
+/* Default hidden state for the navigation menu */
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hide off-screen initially on the right */
+    height: 100%;
+    width: 250px;
+    background-color: #333; /* Dark background for contrast */
+    color: white;
+    display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    gap: 20px;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow on the left side */
+    transition: right 0.3s ease; /* Smooth slide-in effect */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* When the menu is visible */
+.main-nav.visible {
+    right: 0; /* Slide into view from the right */
+}
+
+/* Style for navigation buttons */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Ensure vertical alignment */
+    gap: 10px; /* Add spacing between items */
+}
+
+.nav-list li {
+    margin: 0; /* Remove default margin */
+}
+
+.nav-list button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.nav-list button:hover {
+    background-color: #444; /* Highlight on hover */
+}
+
+/* Style for the menu button */
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1100; /* Ensure it appears above the menu */
+}
+
+/* Overlay for dimming the rest of the screen */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Below the menu but above other content */
+    display: none; /* Hidden by default */
+}
+
+/* Show the overlay when the menu is visible */
+.overlay.visible {
+    display: block;
+}
