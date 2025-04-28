@@ -21,6 +21,12 @@
     align-self: center;
 }
 
+.controls-container{ 
+    width: 80%;
+    height: 90%;
+    place-self: center;
+}
+
 .controls-container button {
     background-color: var(--header-color);
     color: white;

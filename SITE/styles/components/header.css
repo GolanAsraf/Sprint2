@@ -66,12 +66,14 @@
     text-align: left;
     cursor: pointer;
     padding: 10px;
-    width: 100%;
-    transition: background 0.3s ease;
+    width: auto; /* Change from 100% to auto */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    transition: background 0.3s ease, border-radius 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .nav-list button:hover {
     background-color: #444; /* Highlight on hover */
+    border-radius: 16px; /* Rounded corners on hover */
 }
 
 /* Style for the menu button */

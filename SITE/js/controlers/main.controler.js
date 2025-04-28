@@ -22,13 +22,6 @@ function onResize() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    // gElCanvas.width = elContainer.offsetWidth
-    // gElCanvas.height = elContainer.offsetHeight
-
-    // var height = elContainer.offsetHeight - 16
-    // // set canvas size to match container size
-    // gElCanvas.style.width = `${elContainer.offsetWidth}px`
-    // gElCanvas.style.height = `${height}px`
 
     renderCanvas()
 }
@@ -46,15 +39,33 @@ function loadImgtoCanvas(img) {
     imgObj.onload = () => {
         console.log(`Image loaded: ${imgObj.naturalWidth}x${imgObj.naturalHeight}`);
 
-        // Clear the canvas before drawing the new image
+        // Get the canvas container dimensions
+        const elContainer = document.querySelector('.canvas-container');
+        const containerWidth = elContainer.offsetWidth;
+        const containerHeight = elContainer.offsetHeight;
+
+        // Calculate the aspect ratio of the image
+        const imgAspectRatio = imgObj.naturalWidth / imgObj.naturalHeight;
+
+        // Calculate the new canvas dimensions while maintaining the aspect ratio
+        let canvasWidth = Math.min(containerWidth, imgObj.naturalWidth); // Limit to image's natural width
+        let canvasHeight = canvasWidth / imgAspectRatio;
+
+        if (canvasHeight > containerHeight || canvasHeight > imgObj.naturalHeight) {
+            canvasHeight = Math.min(containerHeight, imgObj.naturalHeight); // Limit to image's natural height
+            canvasWidth = canvasHeight * imgAspectRatio;
+        }
+
+        // Set the canvas size
+        gElCanvas.width = canvasWidth;
+        gElCanvas.height = canvasHeight;
+
+        // Set the canvas style for responsiveness
+        gElCanvas.style.width = `${canvasWidth}px`;
+        gElCanvas.style.height = `${canvasHeight}px`;
+
+        // Clear the canvas and draw the image
         gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
-        // Set the canvas size to match the image size
-        gElCanvas.width = imgObj.naturalWidth;
-        gElCanvas.height = imgObj.naturalHeight;
-
-        gElCanvas.style.width = `${imgObj.naturalWidth}px`;
-        gElCanvas.style.height = `${imgObj.naturalHeight}px`;
-
         gCtx.drawImage(imgObj, 0, 0, gElCanvas.width, gElCanvas.height);
     };
 }
