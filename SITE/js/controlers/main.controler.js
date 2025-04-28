@@ -22,14 +22,13 @@ function onResize() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
-    
-    var height = elContainer.offsetHeight - 16
+    // gElCanvas.width = elContainer.offsetWidth
+    // gElCanvas.height = elContainer.offsetHeight
 
-    // set canvas size to match container size
-    gElCanvas.style.width = `${elContainer.offsetWidth}px`
-    gElCanvas.style.height = `${height}px`
+    // var height = elContainer.offsetHeight - 16
+    // // set canvas size to match container size
+    // gElCanvas.style.width = `${elContainer.offsetWidth}px`
+    // gElCanvas.style.height = `${height}px`
 
     renderCanvas()
 }
@@ -46,10 +45,16 @@ function loadImgtoCanvas(img) {
     imgObj.src = img;
     imgObj.onload = () => {
         console.log(`Image loaded: ${imgObj.naturalWidth}x${imgObj.naturalHeight}`);
+
         // Clear the canvas before drawing the new image
         gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+        // Set the canvas size to match the image size
+        gElCanvas.width = imgObj.naturalWidth;
+        gElCanvas.height = imgObj.naturalHeight;
 
-        // Draw the image onto the canvas
-        gCtx.drawImage(imgObj, 0, 0, imgObj.naturalWidth, imgObj.naturalHeight);
+        gElCanvas.style.width = `${imgObj.naturalWidth}px`;
+        gElCanvas.style.height = `${imgObj.naturalHeight}px`;
+
+        gCtx.drawImage(imgObj, 0, 0, gElCanvas.width, gElCanvas.height);
     };
 }
