@@ -21,6 +21,9 @@
         grid-row: 2;
         grid-column: 1;
 
+        width: 97%;
+        justify-self: center;
+
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
@@ -59,8 +62,10 @@
         grid-row: 2;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(160px, 1fr));
+
+        margin-inline: 16px;
     }
 
     .main-footer {
@@ -75,15 +80,47 @@
 
 /* SMALL */
 @media (min-width: 640px) {
+    .main-container {
+        width: 97%;
+        justify-self: center
+    }
 
+    .gallery-container {
+        grid-column: 1;
+        grid-row: 2;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 /* MEDIUM */
 @media (min-width: 930px) {
+    .btn-menu {
+        display: none; /* Hide the menu button on desktop */
+    }
 
+    .main-container {
+        width: 100%;
+    }
+
+    .main-nav {
+        grid-column: 2; /* Place it in column 2 */
+        grid-row: 1; /* Place it in row 1 */
+        position: static; /* Override fixed positioning */
+        border-radius: 12px; /* Add rounded corners */
+        padding: 10px 20px; /* Add padding for better spacing */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+    .nav-list {
+        flex-direction: row; /* Ensure items are in a row */
+    }
+
+    .gallery-container {
+        grid-column: 2;
+        grid-row: 2;
+    }
 }
 
-/* LARGE */
-@media (min-width: 1100px) {
-
-}

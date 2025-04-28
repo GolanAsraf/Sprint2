@@ -24,6 +24,8 @@
 .controls-container{ 
     width: 80%;
     height: 90%;
+    max-width: 450px;
+    max-height: 500px;
     place-self: center;
 }
 

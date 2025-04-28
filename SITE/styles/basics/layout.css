@@ -1,7 +1,7 @@
 
 .body-layout {
     display: grid;
-    grid-template-columns: minmax(16px, 1fr) 1050px minmax(16px, 1fr);
+    grid-template-columns: minmax(16px, 1fr) 880px minmax(16px, 1fr);
     grid-template-rows: 60px auto 60px;
     height: 100vh;
 }
@@ -31,15 +31,15 @@
     grid-row: 2;
 
     display: grid;
-    grid-template-columns: 1fr minmax(500px, 1fr);
+    grid-template-rows: 1fr minmax(500px, 1fr);
 }
 
 .canvas-container {
-    grid-column: 1;
+    grid-row: 1;
 }
 
 .controls-container {
-    grid-column: 2;
+    grid-row: 2;
 
     display: grid;
     grid-template-columns: repeat(5, minmax(50px, 1fr));
