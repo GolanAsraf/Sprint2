@@ -31,7 +31,7 @@
     grid-row: 2;
 
     display: grid;
-    grid-template-rows: 1fr minmax(500px, 1fr);
+    grid-template-rows: auto minmax(360px, 415px);
 }
 
 .canvas-container {

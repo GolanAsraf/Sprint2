@@ -6,6 +6,7 @@
 .text-input {
     border-radius: 16px;
     font-size: 2rem;
+    margin: 6px;
 }
 
 .font-size-text {
@@ -37,4 +38,19 @@
     height: 48px;
     place-self: center;
     cursor: pointer;
+}
+
+/* Style for text containers */
+.text-container {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    z-index: 10; /* Ensure it appears above the canvas */
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* Highlight the active text container */
+.text-container.active {
+    border-color: blue;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
 }

@@ -29,16 +29,14 @@
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">
-            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()"
-                onmousemove="onDraw(event)">
+            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()" style="position: relative;" onmousemove="onDraw(event)">
             </canvas>
         </div>
 
         <div class="controls-container">
-            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here"
-                oninput="onTextInput(event)">
+            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
 
-            <button class="btn-text-switch" onclick="onTxtSwitch()"><i class="fa-solid fa-arrows-up-down"></i></button>
+            <button class="btn-text-switch" onclick="onSwitchText()"><i class="fa-solid fa-arrows-up-down"></i></button>
             <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
             <button class="btn-clear" onclick="onDelete()"><i class="fa-solid fa-trash"></i></button>
 
@@ -91,8 +89,9 @@
             </div>
         </div>
     </footer>
-
+    
     <script src="js/controlers/header.controler.js"></script>
+    <script src="js/services/canvas-text.js"></script>
     <script src="js/controlers/main.controler.js"></script>
     <script src="js/controlers/gallrey.controler.js"></script>
 
