@@ -13,6 +13,10 @@ function onInit() {
     renderCanvas();
 }
 
+function onResize() {
+    onResizeCanvasText();
+}
+
 function renderCanvas() {
     console.log('renderCanvas');
     const elContainer = document.querySelector('.canvas-container');
@@ -86,8 +90,36 @@ function onSwitchText() {
     switchTextContainer();
 }
 
-function onDelete() {
+function onDeleteAll() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     renderCanvas();
+    deleteTextContainers();
+}
+
+function onDeleteLine() {
     deleteTextContainer();
+}
+
+function onChangeSize(ev) {
+    const value = ev.target.value;
+    changeFontSize(value);
+}
+
+function onChangeTextPos(pos) {
+    changeTextAlignment(pos);
+}
+
+function onChangeFont(event){
+    const value = event.target.value;
+
+    changeFont(value);
+}
+
+function onBold() {
+    toggleFontBold();
+}
+
+function onChangeColor(ev) {
+    const value = ev.target.value;
+    changeTextColor(value);
 }

@@ -1,7 +1,7 @@
 
 .body-layout {
     display: grid;
-    grid-template-columns: minmax(16px, 1fr) auto minmax(16px, 1fr);
+    grid-template-columns: minmax(16px, 1fr) minmax(auto, 1050px) minmax(16px, 1fr);
     grid-template-rows: 60px auto 60px;
     height: 100vh;
 }

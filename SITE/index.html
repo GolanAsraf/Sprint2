@@ -29,7 +29,7 @@
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">
-            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()" style="position: relative;" onmousemove="onDraw(event)">
+            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()" style="position: relative;"">
             </canvas>
         </div>
 
@@ -38,14 +38,13 @@
 
             <button class="btn-text-switch" onclick="onSwitchText()"><i class="fa-solid fa-arrows-up-down"></i></button>
             <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
-            <button class="btn-clear" onclick="onDelete()"><i class="fa-solid fa-trash"></i></button>
+            <button class="btn-clear" onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
 
-            <input class="font-size" type="range" id="size-range" min="1" max="100" value="5"
-                onchange="onChangeSize(event)">
+            <input class="font-size" type="range" id="size-range" min="12" max="46" value="16" onchange="onChangeSize(event)">
             <label class="font-size-text" for="size-range">Text Size</label>
-            <button class="btn-txt-start"><i class="fa-solid fa-align-left"></i></button>
-            <button class="btn-txt-center"><i class="fa-solid fa-align-center"></i></button>
-            <button class="btn-txt-end"><i class="fa-solid fa-align-right"></i></button>
+            <button class="btn-txt-start" onclick="onChangeTextPos('start')"><i class="fa-solid fa-align-left"></i></button>
+            <button class="btn-txt-center" onclick="onChangeTextPos('center')"><i class="fa-solid fa-align-center"></i></button>
+            <button class="btn-txt-end" onclick="onChangeTextPos('end')"><i class="fa-solid fa-align-right"></i></button>
 
             <div class="font-family-container">
                 <select id="font-family" onchange="onChangeFont(event)">

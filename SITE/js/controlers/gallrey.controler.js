@@ -31,8 +31,9 @@ function renderGallery(deRender = false) {
 }
 
 function onImgClick(imgId) {
-    onDelete();
+    onDeleteAll();
     console.log(`Image with ID ${imgId} clicked`);
     loadPage('main', 'gallery');
     loadImgtoCanvas(gImgs[imgId - 1].url);
+    onResizeCanvasText();
 }
