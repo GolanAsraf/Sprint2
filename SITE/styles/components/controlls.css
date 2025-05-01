@@ -23,10 +23,10 @@
 }
 
 .controls-container{ 
-    width: 80%;
+    width: 90%;
     height: 90%;
-    max-width: 450px;
-    max-height: 500px;
+    max-width: 400px;
+    max-height: 485px;
     place-self: center;
 }
 
