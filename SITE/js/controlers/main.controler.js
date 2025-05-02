@@ -97,7 +97,7 @@ function onDeleteAll() {
 }
 
 function onDeleteLine() {
-    deleteTextContainer();
+    deleteTextContainer(getSelect);
 }
 
 function onChangeSize(ev) {
@@ -122,4 +122,87 @@ function onBold() {
 function onChangeColor(ev) {
     const value = ev.target.value;
     changeTextColor(value);
+}
+
+function onDownload() {
+    // Create text on the canvas
+    renderTextOnCanvas();
+    deleteTextContainers();
+
+    // Convert the canvas content to a data URL
+    const dataURL = gElCanvas.toDataURL('image/png');
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'canvas-image.png'; // Set the default file name
+
+    // Trigger the download
+    link.click();
+}
+
+function renderTextOnCanvas() {
+    const topTextContainer = document.querySelector('.top-text');
+    const bottomTextContainer = document.querySelector('.bottom-text');
+
+
+    // Helper function to map CSS text alignment to canvas text alignment
+    function mapTextAlign(cssAlign) {
+        if (cssAlign === 'left') return 'start';
+        if (cssAlign === 'center') return 'center';
+        if (cssAlign === 'right') return 'end';
+        return 'center'; // Default to 'center'
+    }
+
+    // Helper function to wrap text
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+        const words = text.split(' ');
+        let line = '';
+
+        for (let i = 0; i < words.length; i++) {
+            const testLine = line + words[i] + ' ';
+            const testWidth = ctx.measureText(testLine).width;
+
+            if (testWidth > maxWidth && i > 0) {
+                ctx.fillText(line, x, y);
+                line = words[i] + ' ';
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, x, y); // Draw the last line
+    }
+
+    const fontSize = parseInt(window.getComputedStyle(topTextContainer).fontSize, 10);
+    const fontFamily = window.getComputedStyle(topTextContainer).fontFamily;
+    const fontWeight = window.getComputedStyle(topTextContainer).fontWeight; // Check if bold is applied
+    const color = window.getComputedStyle(topTextContainer).color;
+    const textAlign = mapTextAlign(window.getComputedStyle(topTextContainer).textAlign);
+
+    gCtx.font = `${fontWeight} ${fontSize}px ${fontFamily}`; // Include font weight
+    gCtx.fillStyle = color;
+    gCtx.textAlign = textAlign;
+
+    let x;
+    if (textAlign === 'start') x = 0; // Align to the left edge
+    else if (textAlign === 'center') x = gElCanvas.width / 2; // Center horizontally
+    else if (textAlign === 'end') x = gElCanvas.width; // Align to the right edge
+
+    if (topTextContainer && gTopText) {
+        const maxWidth = gElCanvas.width * 0.8; // 80% of the canvas width
+        const lineHeight = fontSize * 1.2; // Line height is 1.2 times the font size
+
+        const y = 50; // Adjust Y position for top text
+        wrapText(gCtx, gTopText, x, y, maxWidth, lineHeight);
+    }
+
+    // Render the bottom text
+    if (bottomTextContainer && gBottomText) {
+        const maxWidth = gElCanvas.width * 0.8; // 80% of the canvas width
+        const lineHeight = fontSize * 1.2; // Line height is 1.2 times the font size
+
+        const y = gElCanvas.height - 60; // Adjust Y position for bottom text
+        wrapText(gCtx, gBottomText, x, y, maxWidth, lineHeight);
+    }
 }

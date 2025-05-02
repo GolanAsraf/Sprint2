@@ -63,9 +63,9 @@ function createTextContainers() {
 
 function renderTextInput(event) {
     createTextContainers(); // Create text containers for top and bottom
-
+    
     const text = event.target.value;
-
+    
     // Update the active text container's content
     const activeTextContainer = document.querySelector('.text-container.active');
     if (activeTextContainer) {
@@ -74,13 +74,15 @@ function renderTextInput(event) {
         activeTextContainer.style.fontSize = `${gFontSize}px`; // Apply the current font size
         activeTextContainer.style.display = text ? 'block' : 'none'; // Show or hide based on text
     }
-
+    
     // Update the corresponding text variable
     if (gTextPosition === 'top') {
         gTopText = text;
     } else if (gTextPosition === 'bottom') {
         gBottomText = text;
     }
+
+    onResizeCanvasText(); // Adjust their positions
 }
 
 function wrapText(text, maxWidth) {
@@ -96,11 +98,12 @@ function wrapText(text, maxWidth) {
         const testLine = line + words[i] + ' ';
         const testWidth = tempCtx.measureText(testLine).width;
 
+        // Check if the line exceeds 80% of the canvas width
         if (testWidth > maxWidth && i > 0) {
             wrappedText += line + '<br>'; // Add the current line and start a new one
-            line = words[i] + ' ';
+            line = words[i] + ' '; // Start a new line with the current word
         } else {
-            line = testLine;
+            line = testLine; // Add the word to the current line
         }
     }
 
@@ -148,49 +151,30 @@ function switchActiveTextContainer() {
     }
 }
 
-function deleteTextContainers() {
+function deleteTextContainers(delAll = 'all') {
     // Select both text containers
     const topTextContainer = document.querySelector('.top-text');
     const bottomTextContainer = document.querySelector('.bottom-text');
 
     // Remove the top text container if it exists
-    if (topTextContainer) {
+    if (topTextContainer && delAll === 'all' || delAll === 'top') {
         topTextContainer.remove();
+        gTopText = '';
     }
 
     // Remove the bottom text container if it exists
-    if (bottomTextContainer) {
+    if (bottomTextContainer && delAll === 'all' || delAll === 'bottom') {
         bottomTextContainer.remove();
+        gBottomText = '';
     }
-
-    // Clear the text variables
-    gTopText = '';
-    gBottomText = '';
 
     // Clear the input field
     const textInput = document.querySelector('.text-input');
     if (textInput) {
         textInput.value = '';
     }
-}
 
-function deleteTextContainer() {
-    const topTextContainer = document.querySelector('.top-text');
-    const bottomTextContainer = document.querySelector('.bottom-text');
-
-    if (gTextPosition === 'top' && topTextContainer) {
-        topTextContainer.innerHTML = ''; // Clear the text content
-        gTopText = ''; // Clear the global variable for top text
-    } else if (gTextPosition === 'bottom' && bottomTextContainer) {
-        bottomTextContainer.innerHTML = ''; // Clear the text content
-        gBottomText = ''; // Clear the global variable for bottom text
-    }
-
-    // Clear the input field
-    const textInput = document.querySelector('.text-input');
-    if (textInput) {
-        textInput.value = ''; // Clear the input field
-    }
+    gTextPosition = 'top'; // Reset to top text position
 }
 
 function changeFontSize(size) {
@@ -280,4 +264,11 @@ function changeTextColor(color) {
     if (bottomTextContainer) {
         bottomTextContainer.style.color = color;
     }
+}
+
+function getSelectedTextContainer() {
+    const topTextContainer = document.querySelector('.top-text');
+    const bottomTextContainer = document.querySelector('.bottom-text');
+
+    return gTextPosition === 'top' ? 'top' : 'bottom';
 }
