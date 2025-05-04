@@ -16,7 +16,6 @@ function selectEmoji(emojiId) {
     if (gEmoji === emojiId) {
         gEmoji = null;
         elSelectedEmoji.classList.remove('highlighted'); // Remove highlight
-        console.log('Emoji deselected:', emojiId);
     } else {
         // Deselect any previously selected emoji
         const elPreviouslySelected = document.querySelector('.btn-emoji.highlighted');
@@ -27,7 +26,6 @@ function selectEmoji(emojiId) {
         // Select the new emoji
         gEmoji = emojiId;
         elSelectedEmoji.classList.add('highlighted'); // Add highlight
-        console.log('Emoji selected:', emojiId);
     }
 }
 

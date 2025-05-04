@@ -11,8 +11,7 @@ function onShowPage(className) {
     const elBtn = document.querySelector(`.${className}`);
 
     // Check if the button already has the 'active' class
-    if (elBtn.classList.contains('active')) {
-        console.log(`${className} button is already active`);
+    if (!elBtn || elBtn.classList.contains('active')) {
         return; // Exit the function
     }
 

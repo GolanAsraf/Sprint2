@@ -29,47 +29,55 @@
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">
-            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" ontouchstart="onDown(event)" style="position: relative;"">
+            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" ontouchstart="onDown(event)"
+                style="position: relative;"">
             </canvas>
         </div>
 
-        <div class="controls-container">
-            <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here" oninput="onTextInput(event)">
+        <div class=" controls-container">
+                <input class="text-input" type="text" id="text-input" placeholder="Enter meme text here"
+                    oninput="onTextInput(event)">
 
-            <button class="btn-text-switch" onclick="onSwitchText()"><i class="fa-solid fa-arrows-up-down"></i></button>
-            <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
-            <button class="btn-clear" onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn-text-switch" onclick="onSwitchText()"><i
+                        class="fa-solid fa-arrows-up-down"></i></button>
+                <button class="btn-add-text" onclick="onAddText()"><i class="fa-solid fa-comment"></i></button>
+                <button class="btn-clear" onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
 
-            <input class="font-size" type="range" id="size-range" min="12" max="46" value="16" onchange="onChangeSize(event)">
-            <label class="font-size-text" for="size-range">Text Size</label>
-            <button class="btn-txt-start" onclick="onChangeTextPos('start')"><i class="fa-solid fa-align-left"></i></button>
-            <button class="btn-txt-center" onclick="onChangeTextPos('center')"><i class="fa-solid fa-align-center"></i></button>
-            <button class="btn-txt-end" onclick="onChangeTextPos('end')"><i class="fa-solid fa-align-right"></i></button>
+                <input class="font-size" type="range" id="size-range" min="12" max="46" value="16"
+                    onchange="onChangeSize(event)">
+                <label class="font-size-text" for="size-range">Text Size</label>
+                <button class="btn-txt-start" onclick="onChangeTextPos('start')"><i
+                        class="fa-solid fa-align-left"></i></button>
+                <button class="btn-txt-center" onclick="onChangeTextPos('center')"><i
+                        class="fa-solid fa-align-center"></i></button>
+                <button class="btn-txt-end" onclick="onChangeTextPos('end')"><i
+                        class="fa-solid fa-align-right"></i></button>
 
-            <div class="font-family-container">
-                <select id="font-family" onchange="onChangeFont(event)">
-                    <option value="Arial">Arial</option>
-                    <option value="Courier New">Courier New</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Verdana">Verdana</option>
-                </select>
-            </div>
+                <div class="font-family-container">
+                    <select id="font-family" onchange="onChangeFont(event)">
+                        <option value="Arial">Arial</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
 
-            <button class="btn-txt-bold" onclick="onBold()">B</button>
-            <input class="color-picker" type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
+                <button class="btn-txt-bold" onclick="onBold()">B</button>
+                <input class="color-picker" type="color" id="color-picker" value="#000000"
+                    onchange="onChangeColor(event)">
 
-            <div class="emoji-container">
-                <button class="btn-emoji" onclick="onSelectEmoji('01-emoji')"></button>
-                <button class="btn-emoji" onclick="onSelectEmoji('02-emoji')"></button>
-                <button class="btn-emoji" onclick="onSelectEmoji('03-emoji')"></button>
-                <button class="btn-emoji" onclick="onSelectEmoji('04-emoji')"></button>
-                <button class="btn-emoji" onclick="onSelectEmoji('05-emoji')"></button>
-            </div>
+                <div class="emoji-container">
+                    <button class="btn-emoji" onclick="onSelectEmoji('01-emoji')"></button>
+                    <button class="btn-emoji" onclick="onSelectEmoji('02-emoji')"></button>
+                    <button class="btn-emoji" onclick="onSelectEmoji('03-emoji')"></button>
+                    <button class="btn-emoji" onclick="onSelectEmoji('04-emoji')"></button>
+                    <button class="btn-emoji" onclick="onSelectEmoji('05-emoji')"></button>
+                </div>
 
-            <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
-            <button class="btn-download" onclick="onDownload()"><i class="fa-solid fa-download"></i></button>
-            <button class="btn-share" onclick="onShare()"><i class="fa-solid fa-share-nodes"></i></button>
+                <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="btn-download" onclick="onDownload()"><i class="fa-solid fa-download"></i></button>
+                <button class="btn-share" onclick="onShare(event)"><i class="fa-solid fa-share-nodes"></i></button>
 
         </div>
     </main>
@@ -83,13 +91,16 @@
         <div class="footer-container flex align-center gap">
             <p>&copy; 2025 Kekw Meme Generator by Golan Asraf</p>
             <div class="social-media-icons flex gap">
-                <button><i class="fa-brands fa-facebook"></i></button>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-twitter"></i>
+                <button onclick="window.open('https://www.facebook.com/golan.asraf', '_blank')">
+                    <i class="fa-brands fa-facebook"></i></button>
+                <button onclick="window.open('https://www.instagram.com', '_blank')">
+                    <i class="fa-brands fa-instagram"></i></button>
+                <button onclick="window.open('https://www.x.com', '_blank')">
+                    <i class="fa-brands fa-twitter"></i></button>
             </div>
         </div>
     </footer>
-    
+
     <script src="js/controlers/header.controler.js"></script>
     <script src="js/services/canvas-text.js"></script>
     <script src="js/services/emoji.service.js"></script>

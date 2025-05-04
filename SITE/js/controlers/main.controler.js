@@ -47,24 +47,24 @@ function loadImgtoCanvas(img) {
     imgObj.src = img;
     imgObj.onload = () => {
         console.log(`Image loaded: ${imgObj.naturalWidth}x${imgObj.naturalHeight}`);
-        
+
         // Get the canvas container dimensions
         const elContainer = document.querySelector('.canvas-container');
         const containerWidth = elContainer.offsetWidth;
         const containerHeight = elContainer.offsetHeight;
-        
+
         // Calculate the aspect ratio of the image
         const imgAspectRatio = imgObj.naturalWidth / imgObj.naturalHeight;
-        
+
         // Calculate the new canvas dimensions while maintaining the aspect ratio
         let canvasWidth = Math.min(containerWidth, imgObj.naturalWidth); // Limit to image's natural width
         let canvasHeight = canvasWidth / imgAspectRatio;
-        
+
         if (canvasHeight > containerHeight || canvasHeight > imgObj.naturalHeight) {
             canvasHeight = Math.min(containerHeight, imgObj.naturalHeight); // Limit to image's natural height
             canvasWidth = canvasHeight * imgAspectRatio;
         }
-        
+
         // Set the canvas size
         gElCanvas.width = canvasWidth;
         gElCanvas.height = canvasHeight;
@@ -110,7 +110,7 @@ function onChangeTextPos(pos) {
     changeTextAlignment(pos);
 }
 
-function onChangeFont(event){
+function onChangeFont(event) {
     const value = event.target.value;
 
     changeFont(value);
@@ -233,3 +233,45 @@ function getEventPosition(ev) {
     const y = ev.clientY - rect.top;
     return { x, y };
 }
+
+function onShare(ev) {
+    ev.preventDefault();
+    
+    // Create text on the canvas
+    renderTextOnCanvas();
+    deleteTextContainers();
+
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+
+    // After a succesful upload, allow the user to share on Facebook
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        console.log('encodedUploadedImgUrl:', encodedUploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+
+    }
+    uploadImg(canvasData, onSuccess)
+}
+
+// on submit call to this function
+async function uploadImg(imgData, onSuccess) {
+    const CLOUD_NAME = 'webify'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData()
+    formData.append('file', imgData)
+    formData.append('upload_preset', 'webify')
+    try {
+        const res = await fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+        const data = await res.json()
+        console.log('Cloudinary response:', data)
+        onSuccess(data.secure_url)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
