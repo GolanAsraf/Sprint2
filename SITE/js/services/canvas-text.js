@@ -210,7 +210,11 @@ function changeTextAlignment(alignment) {
     applyAlignment(bottomTextContainer, alignment, canvasRect);
 }
 
-function applyAlignment(textContainer, alignment, canvasRect) {
+function applyAlignment(textContainer, alignment = 'center', canvasRect) {
+    if (!textContainer) {
+        return; // Exit the function if the textContainer is null
+    }
+
     if (alignment === 'start') {
         textContainer.style.textAlign = 'left';
         textContainer.style.left = `${canvasRect.left + 1}px`; // Align to the left edge of the canvas

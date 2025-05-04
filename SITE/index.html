@@ -29,7 +29,7 @@
 
     <main class="main-layout main-container">
         <div class="canvas-container flex justify-center align-center">
-            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" onmouseup="onUp()" style="position: relative;"">
+            <canvas width="400" height="400" id="canvas" onmousedown="onDown(event)" ontouchstart="onDown(event)" style="position: relative;"">
             </canvas>
         </div>
 
@@ -60,17 +60,17 @@
             <input class="color-picker" type="color" id="color-picker" value="#000000" onchange="onChangeColor(event)">
 
             <div class="emoji-container">
-                <button class="btn-emoji" onclick="onAddEmoji('😂')">😂</button>
-                <button class="btn-emoji" onclick="onAddEmoji('🤣')">🤣</button>
-                <button class="btn-emoji" onclick="onAddEmoji('😅')">😅</button>
-                <button class="btn-emoji" onclick="onAddEmoji('😆')">😆</button>
-                <button class="btn-emoji" onclick="onAddEmoji('😜')">😜</button>
+                <button class="btn-emoji" onclick="onSelectEmoji('01-emoji')"></button>
+                <button class="btn-emoji" onclick="onSelectEmoji('02-emoji')"></button>
+                <button class="btn-emoji" onclick="onSelectEmoji('03-emoji')"></button>
+                <button class="btn-emoji" onclick="onSelectEmoji('04-emoji')"></button>
+                <button class="btn-emoji" onclick="onSelectEmoji('05-emoji')"></button>
             </div>
 
             <button class="btn-save" onclick="onSave()"><i class="fa-solid fa-floppy-disk"></i></button>
             <button class="btn-download" onclick="onDownload()"><i class="fa-solid fa-download"></i></button>
             <button class="btn-share" onclick="onShare()"><i class="fa-solid fa-share-nodes"></i></button>
-            
+
         </div>
     </main>
 
@@ -92,6 +92,7 @@
     
     <script src="js/controlers/header.controler.js"></script>
     <script src="js/services/canvas-text.js"></script>
+    <script src="js/services/emoji.service.js"></script>
     <script src="js/controlers/main.controler.js"></script>
     <script src="js/controlers/gallrey.controler.js"></script>
 

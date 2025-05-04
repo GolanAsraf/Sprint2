@@ -11,6 +11,7 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d');
 
     renderCanvas();
+    renderEmojiImgs();
 }
 
 function onResize() {
@@ -205,4 +206,30 @@ function renderTextOnCanvas() {
         const y = gElCanvas.height - 60; // Adjust Y position for bottom text
         wrapText(gCtx, gBottomText, x, y, maxWidth, lineHeight);
     }
+}
+
+function onSelectEmoji(emoji) {
+    selectEmoji(emoji);
+}
+
+function onDown(ev) {
+    const pos = getEventPosition(ev); // Get the position of the click
+    const emojiSrc = getSelectedEmoji(); // Get the selected emoji's image source
+
+    if (!emojiSrc) return; // Exit if no emoji is selected
+
+    const img = new Image();
+    img.src = emojiSrc;
+
+    img.onload = () => {
+        const size = 50; // Set the size of the emoji
+        gCtx.drawImage(img, pos.x - size / 2, pos.y - size / 2, size, size); // Draw the emoji centered at the click position
+    };
+}
+
+function getEventPosition(ev) {
+    const rect = gElCanvas.getBoundingClientRect();
+    const x = ev.clientX - rect.left;
+    const y = ev.clientY - rect.top;
+    return { x, y };
 }

@@ -6,3 +6,15 @@ button {
   font: inherit;
   padding: 0;
 }
+
+.btn-emoji img {
+  width: 80%; /* Set the image width to 80% of the button size */
+  height: 80%; /* Set the image height to 80% of the button size */
+  object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
+
+.btn-emoji.highlighted {
+  border: 2px solid var-(--color-primary);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 255, 0.1);
+}
